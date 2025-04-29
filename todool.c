@@ -19,8 +19,26 @@ void addTask(){
     fgets(tasks[taskCount].description,100,stdin);
     tasks[taskCount].completed=0;
     taskCount++;
-    printf("Task: %s added succesfully",tasks[taskCount-1].description);
+    printf("Task: %s added succesfully\n",tasks[taskCount-1].description);
 
+}
+
+void listTasks()
+{
+    if(taskCount==0){
+        printf("You do not have any pending tasks! Enter a task first\n");
+        roastUser();
+        return;
+    }
+    printf("----YOUR TASKS-----\n");
+    for(int i=0;i< taskCount;
+    i++){
+        printf("%d.[%c] %s", i+1, tasks[i].completed?'X':' ',tasks[i].description);
+    }
+}
+
+void roastUser(){
+    printf("\n🚨 BRO... YOUR TASK LIST IS EMPTY. ARE YOU EVEN TRYING? 🚨\n");
 }
 
 void printMenu(){
@@ -46,7 +64,7 @@ int main(){
             break;
 
             case 2:
-            printf("\n Tasks will appear here! (Coming soon)\n");
+            listTasks();
             break;
 
             case 3:
