@@ -38,14 +38,44 @@ void listTasks()
 }
 
 void roastUser(){
-    printf("\n🚨 BRO... YOUR TASK LIST IS EMPTY. ARE YOU EVEN TRYING? 🚨\n");
+    const char* roasts[]={
+        "Bro..Your list is literally empty, are you even trying?", "Task List cleared, time to touch some grass!", "Zero Tasks? Damn you fast af"};
+        printf("\n %s\n",roasts[rand()%3]);
+    }
+
+void deleteTask(){
+    if(taskCount==0){
+    printf("Task List is empty,cannot delete tasks!");
+    roastUser();
+    return;}
+
+    printf("Enter task number to delete(1-%d)",taskCount);
+    int taskNum;
+    scanf("%d",&taskNum);
+    getchar();
+
+    if(taskNum<1|| taskNum>taskCount)
+    {
+        printf("Invalid task number. Try again, champ!\n");
+        return;
+    }
+    for(int i=taskNum-1;i<taskCount-1;i++){
+        tasks[i]=tasls[i+1];
+    }
+    taskCount--;
+    printf("Task %d DELETED. Out of sight, out of mind!\n",taskNum);
+    
 }
+
+
+
 
 void printMenu(){
     printf("welcome to Todool- your workbro!\n");
     printf("1.Add Task\n");
     printf("2.List Tasks\n");
-    printf("3.Exit\n");
+    printf("3.Delete Tasks\n");
+    printf("4.Exit\n");
     printf("Choose an option:");
 }
 
@@ -66,8 +96,12 @@ int main(){
             case 2:
             listTasks();
             break;
-
+             
             case 3:
+            deleteTask();
+            break;
+
+            case 4:
             printf("Bye Bye! Go crush your tasks!");
             break;
 
