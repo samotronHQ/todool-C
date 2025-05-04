@@ -31,5 +31,5 @@ A simple terminal-based C program that presents a menu to the user and executes 
 
 ### 💻 Compile
 ```bash
-gcc main.c -o menu
+gcc todool.c -o menu
 
